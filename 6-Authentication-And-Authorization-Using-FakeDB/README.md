@@ -40,4 +40,4 @@ This project provides a basic demonstration of how to implement user authenticat
 
 ## Requires:
 
-```pip install passlib PyJWT```
+```pip install fastapi[all] sqlalchemy pydantic passlib PyJWT bcrypt```
