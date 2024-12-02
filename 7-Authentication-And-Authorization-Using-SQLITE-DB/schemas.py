@@ -24,3 +24,7 @@ class User(UserBase):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+# Server Status Model
+class ServerStatusModel(BaseModel):
+    status: str

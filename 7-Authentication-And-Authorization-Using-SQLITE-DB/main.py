@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import jwt
 
 import crud, models, schemas
-from schemas import User
+from schemas import User, ServerStatusModel
 from database import SessionLocal, engine  # Import engine from database.py
 
 # Create tables in the database (if not already created)
@@ -92,3 +92,8 @@ def read_users_me(current_user: str = Depends(get_current_user), db: Session = D
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
+
+# unprotected route
+@app.get("/", response_model=ServerStatusModel)
+def is_server_online():
+    return {"status" : "WebService is up and running!"}
