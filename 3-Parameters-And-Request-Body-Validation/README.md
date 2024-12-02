@@ -1,4 +1,4 @@
-# FastAPI Examples
+# Parameters and Request Body Validation Examples
 
 This project contains examples demonstrating various FastAPI features, including:
 
