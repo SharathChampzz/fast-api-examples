@@ -1,0 +1,15 @@
+2024-12-03 12:16:29,302 - fastapi_app - DEBUG - Debug: Accessing the root endpoint
+2024-12-03 12:16:29,302 - fastapi_app - INFO - Info: Root endpoint accessed successfully
+2024-12-03 12:16:31,791 - fastapi_app - DEBUG - Debug: Accessing the root endpoint
+2024-12-03 12:16:31,791 - fastapi_app - INFO - Info: Root endpoint accessed successfully
+2024-12-03 12:16:32,795 - fastapi_app - DEBUG - Debug: Accessing the root endpoint
+2024-12-03 12:16:32,795 - fastapi_app - INFO - Info: Root endpoint accessed successfully
+2024-12-03 12:16:39,432 - fastapi_app - DEBUG - Debug: Received request for item 23
+2024-12-03 12:16:39,432 - fastapi_app - INFO - Info: Returning item with ID 23
+2024-12-03 12:16:41,807 - fastapi_app - DEBUG - Debug: Received request for item 12
+2024-12-03 12:16:41,808 - fastapi_app - INFO - Info: Returning item with ID 12
+2024-12-03 12:16:44,384 - fastapi_app - DEBUG - Debug: Received request for item 34
+2024-12-03 12:16:44,384 - fastapi_app - INFO - Info: Returning item with ID 34
+2024-12-03 12:19:26,570 - users - INFO - Fetching all users
+2024-12-03 12:19:40,039 - users - DEBUG - Fetching user with ID: 34
+2024-12-03 12:19:44,608 - users - DEBUG - Fetching user with ID: 56
