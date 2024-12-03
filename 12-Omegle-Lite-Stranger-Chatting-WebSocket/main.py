@@ -51,6 +51,19 @@ class ConnectionManager:
             websocket = self.active_connections[user_id]["websocket"]
             await websocket.send_text(message)
 
+    async def notify_disconnection(self, user_id: str):
+        """Notify the partner of disconnection."""
+        partner_id = self.pairings.get(user_id)
+        if partner_id and partner_id in self.active_connections:
+            await self.send_message(partner_id, "PARTNER_DISCONNECTED")
+            # Mark partner as free
+            self.active_connections[partner_id]["status"] = "free"
+            del self.pairings[partner_id]
+
+    def get_partner(self, user_id: str) -> Optional[str]:
+        """Get the partner of a connected user."""
+        return self.pairings.get(user_id)
+
 manager = ConnectionManager()
 
 @app.websocket("/ws")
@@ -62,7 +75,7 @@ async def websocket_endpoint(websocket: WebSocket):
             data = await websocket.receive_text()
             print(f'Received Data: {data}')
             if data.startswith("SET_USERNAME:"):
-                username = data.split(":")[1]
+                username = data.split(":", 1)[1]
                 await manager.set_username(user_id, username)
             elif data == "CHAT_WITH_STRANGER":
                 partner_id = await manager.match_users(user_id)
@@ -73,17 +86,20 @@ async def websocket_endpoint(websocket: WebSocket):
                 else:
                     await manager.send_message(user_id, "NO_PARTNER_FOUND")
             elif data == "DISCONNECT":
-                partner_id = manager.pairings[user_id]
+                partner_id = manager.get_partner(user_id)
                 if partner_id:
-                    await manager.send_message(partner_id, "PARTNER_DISCONNECTED")
-                    manager.active_connections[partner_id]["status"] = "free"
-                    manager.pairings.pop(partner_id, None)
+                    await manager.notify_disconnection(user_id)
                 manager.active_connections[user_id]["status"] = "free"
                 manager.pairings.pop(user_id, None)
+                await manager.send_message(user_id, "DISCONNECTED")
             elif data.startswith("MESSAGE:"):
                 message = data.split(":", 1)[1]
-                partner_id = manager.pairings[user_id]
+                partner_id = manager.get_partner(user_id)
                 if partner_id:
                     await manager.send_message(partner_id, f"MESSAGE:{message}")
     except WebSocketDisconnect:
+        # Ensure proper cleanup on unexpected disconnections
+        partner_id = manager.get_partner(user_id)
+        if partner_id:
+            await manager.notify_disconnection(user_id)
         manager.disconnect(user_id)

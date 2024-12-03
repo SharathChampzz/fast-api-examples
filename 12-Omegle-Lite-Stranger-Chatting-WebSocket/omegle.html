@@ -5,16 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omegle Lite</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        #chat-box { border: 1px solid #ccc; height: 400px; overflow-y: auto; padding: 10px; margin-bottom: 10px; }
-        #chat-box .message { margin: 5px 0; }
-        #chat-box .received { text-align: left; color: blue; }
-        #chat-box .sent { text-align: right; color: green; }
-        #controls { display: flex; gap: 10px; }
-        button { padding: 10px; cursor: pointer; }
-        #username-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }
-        #username-modal div { background: white; padding: 20px; border-radius: 8px; text-align: center; }
-        #username-modal input { padding: 10px; margin-bottom: 10px; width: 200px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f2f5;
+        }
+        #chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #chat-box {
+            height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            background: #eef2f7;
+        }
+        .message {
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 70%;
+        }
+        .received {
+            background: #d1f7d6;
+            text-align: left;
+        }
+        .sent {
+            background: #daf0ff;
+            text-align: right;
+            margin-left: auto;
+        }
+        #controls {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            background: #fff;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #username-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #username-modal div {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        #username-modal input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -26,12 +99,14 @@
         </div>
     </div>
 
-    <div id="chat-box"></div>
-    <div id="controls">
-        <button id="start-chat">Chat with Stranger</button>
-        <input type="text" id="message-input" placeholder="Type your message" />
-        <button id="send-message">Send</button>
-        <button id="disconnect">Disconnect</button>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <div id="controls">
+            <button id="start-chat">Chat with Stranger</button>
+            <input type="text" id="message-input" placeholder="Type your message" />
+            <button id="send-message">Send</button>
+            <button id="disconnect">Disconnect</button>
+        </div>
     </div>
 
     <script>
@@ -46,8 +121,6 @@
         const disconnectBtn = document.getElementById("disconnect");
 
         function appendMessage(message, type) {
-            console.log(`Message: ${message}`)
-            console.log(`Type: ${type}`)
             const div = document.createElement("div");
             div.className = `message ${type}`;
             div.textContent = message;
@@ -70,18 +143,21 @@
 
             socket.onmessage = (event) => {
                 const data = event.data;
-                console.log(data);
                 if (data.startsWith("CONNECTED:")) {
                     myId = data.split(":")[1];
-                    appendMessage("Connected to server as ID: " + myId, "received");
                 } else if (data.startsWith("USERNAME_SET:")) {
-                    appendMessage("Username set to: " + data.split(":")[1], "received");
+                    appendMessage("You are connected as " + data.split(":")[1], "received");
                 } else if (data.startsWith("CONNECTED_WITH:")) {
                     targetId = data.split(":")[1];
-                    const partnerUsername = data.split(":")[2];
-                    appendMessage("Connected with: " + partnerUsername, "received");
-                } else if (data === "NO_PARTNER_FOUND") {
-                    appendMessage("No partner available. Try again later.", "received");
+                    appendMessage("Connected to: " + data.split(":")[2], "received");
+                } else if (data === "PARTNER_DISCONNECTED") {
+                    alert("Other user disconnected. Try chatting with someone else.");
+                    targetId = "";
+                    chatBox.innerHTML = "";
+                } else if (data === "DISCONNECTED") {
+                    targetId = "";
+                    chatBox.innerHTML = "";
+                    appendMessage("You disconnected. Start a new chat!", "received");
                 } else if (data.startsWith("MESSAGE:")) {
                     appendMessage(data.split(":")[1], "received");
                 }
@@ -98,15 +174,11 @@
                     messageInput.value = "";
                 }
             } else {
-                appendMessage("No partner connected.", "received");
+                alert("No partner connected. Click on Chat with stranger");
             }
         };
 
-        disconnectBtn.onclick = () => {
-            socket.send("DISCONNECT");
-            appendMessage("Disconnected from chat.", "received");
-            targetId = "";
-        };
+        disconnectBtn.onclick = () => socket.send("DISCONNECT");
     </script>
 </body>
 </html>
