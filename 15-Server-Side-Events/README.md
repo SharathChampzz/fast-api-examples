@@ -79,3 +79,6 @@ The frontend consumes the streamed data and:
     `npm install`
 2. Start the React development server: `npm start`
 3. The frontend will run at http://localhost:3000.
+
+## Output
+![image](https://github.com/user-attachments/assets/9c0a08d3-b9f4-4460-ab42-49e77ddbfd7a)
