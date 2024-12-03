@@ -47,4 +47,12 @@ Omegle Lite is a simplified web application that allows users to chat with rando
    - Optimized for both mobile and desktop devices.
    - Message bubbles and controls are styled for a clean, modern appearance.
 
+Output Screenshot:
+User 1: "Champzz"
+
+![image](https://github.com/user-attachments/assets/b41c2aee-c31e-4ce7-9777-8b7ef875305b)
+
+User 2: "Sharath"
+
+![image](https://github.com/user-attachments/assets/c38f54eb-d0da-4aac-8b77-9d44fe6f415a)
 
