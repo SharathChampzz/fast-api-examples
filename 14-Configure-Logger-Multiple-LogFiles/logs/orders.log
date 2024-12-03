@@ -1,0 +1,7 @@
+2024-12-03 12:12:11,387 - orders - INFO - Fetching all orders
+2024-12-03 12:12:33,955 - orders - INFO - Fetching all orders
+2024-12-03 12:12:43,799 - orders - INFO - Fetching all orders
+2024-12-03 12:12:43,938 - orders - INFO - Fetching all orders
+2024-12-03 12:12:50,218 - orders - DEBUG - Fetching order with ID: 5
+2024-12-03 12:12:52,426 - orders - DEBUG - Fetching order with ID: 6
+2024-12-03 12:12:55,290 - orders - DEBUG - Fetching order with ID: 7

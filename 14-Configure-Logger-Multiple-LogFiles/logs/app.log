@@ -1,0 +1,55 @@
+2024-12-03 12:11:05,164 - app - INFO - Received request: GET http://127.0.0.1:8000/
+2024-12-03 12:11:05,166 - app - INFO - Accessed root endpoint
+2024-12-03 12:11:05,167 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:11:14,072 - app - INFO - Received request: GET http://127.0.0.1:8000/docs
+2024-12-03 12:11:14,072 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:11:14,800 - app - INFO - Received request: GET http://127.0.0.1:8000/openapi.json
+2024-12-03 12:11:14,802 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:11:26,224 - app - INFO - Received request: GET http://127.0.0.1:8000/users/
+2024-12-03 12:11:26,224 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:11:33,946 - app - INFO - Received request: GET http://127.0.0.1:8000/users/
+2024-12-03 12:11:33,949 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:11:34,537 - app - INFO - Received request: GET http://127.0.0.1:8000/users/
+2024-12-03 12:11:34,537 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:11:34,961 - app - INFO - Received request: GET http://127.0.0.1:8000/users/
+2024-12-03 12:11:34,964 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:11:49,516 - app - INFO - Received request: GET http://127.0.0.1:8000/users/1
+2024-12-03 12:11:49,516 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:11:52,334 - app - INFO - Received request: GET http://127.0.0.1:8000/users/1
+2024-12-03 12:11:52,334 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:02,497 - app - INFO - Received request: GET http://127.0.0.1:8000/products/
+2024-12-03 12:12:02,499 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:11,387 - app - INFO - Received request: GET http://127.0.0.1:8000/orders/
+2024-12-03 12:12:11,387 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:19,371 - app - INFO - Received request: GET http://127.0.0.1:8000/products/4
+2024-12-03 12:12:19,371 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:20,222 - app - INFO - Received request: GET http://127.0.0.1:8000/products/4
+2024-12-03 12:12:20,222 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:20,719 - app - INFO - Received request: GET http://127.0.0.1:8000/products/4
+2024-12-03 12:12:20,719 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:20,990 - app - INFO - Received request: GET http://127.0.0.1:8000/products/4
+2024-12-03 12:12:20,990 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:21,166 - app - INFO - Received request: GET http://127.0.0.1:8000/products/4
+2024-12-03 12:12:21,166 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:25,945 - app - INFO - Received request: GET http://127.0.0.1:8000/products/
+2024-12-03 12:12:25,949 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:26,137 - app - INFO - Received request: GET http://127.0.0.1:8000/products/
+2024-12-03 12:12:26,137 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:33,955 - app - INFO - Received request: GET http://127.0.0.1:8000/orders/
+2024-12-03 12:12:33,955 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:43,799 - app - INFO - Received request: GET http://127.0.0.1:8000/orders/
+2024-12-03 12:12:43,799 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:43,937 - app - INFO - Received request: GET http://127.0.0.1:8000/orders/
+2024-12-03 12:12:43,938 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:50,218 - app - INFO - Received request: GET http://127.0.0.1:8000/orders/5
+2024-12-03 12:12:50,218 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:12:52,426 - app - INFO - Received request: GET http://127.0.0.1:8000/orders/6
+2024-12-03 12:12:52,431 - app - INFO - Response status: 200, Time: 0.01s
+2024-12-03 12:12:55,290 - app - INFO - Received request: GET http://127.0.0.1:8000/orders/7
+2024-12-03 12:12:55,290 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:13:06,026 - app - INFO - Received request: GET http://127.0.0.1:8000/
+2024-12-03 12:13:06,029 - app - INFO - Accessed root endpoint
+2024-12-03 12:13:06,029 - app - INFO - Response status: 200, Time: 0.00s
+2024-12-03 12:13:06,852 - app - INFO - Received request: GET http://127.0.0.1:8000/
+2024-12-03 12:13:06,852 - app - INFO - Accessed root endpoint
+2024-12-03 12:13:06,852 - app - INFO - Response status: 200, Time: 0.00s
